@@ -332,3 +332,7 @@ ASALocalRun/
 /SummerBoot.Performance.Test/SummerBoot.Performance.Test.csproj
 /SummerBoot.Test/SummerBoot.Test.csproj
 /WebApplication1/WebApplication1.csproj
+/WebApiExample/appsettings.json
+/WebApiExample/appsettings.Development.json
+/WebApiExample/Controllers/HomeController.cs
+/WebApiExample/Program.cs
