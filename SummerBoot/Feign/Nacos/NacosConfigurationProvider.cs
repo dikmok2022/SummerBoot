@@ -12,6 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using SummerBoot.Core.Configuration.Parser;
 using YamlDotNet.Core.Tokens;
+using SummerBoot.Cache;
 
 namespace SummerBoot.Feign.Nacos
 {
@@ -33,6 +34,7 @@ namespace SummerBoot.Feign.Nacos
             serviceCollection.AddSingleton<IConfiguration>(configuration);
             serviceCollection.AddLogging();
             serviceCollection.AddSummerBoot();
+            serviceCollection.AddSummerBootCache(it => it.UseMemory());
             serviceCollection.AddSummerBootFeign(it => it.AddNacos(configuration));
             serviceProvider = serviceCollection.BuildServiceProvider().CreateScope().ServiceProvider;
             nacosOption = configuration.GetSection("nacos").Get<NacosOption>();

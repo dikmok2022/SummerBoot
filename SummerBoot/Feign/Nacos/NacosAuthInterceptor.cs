@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using SummerBoot.Cache;
 using SummerBoot.Feign.Nacos.Dto;
 using System;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SummerBoot.Feign.Nacos
 {
-    public class NacosAuthInterceptor
+    public class NacosAuthInterceptor:IRequestInterceptor
     {
         private readonly INacosService nacosService;
         private readonly IConfiguration configuration;
@@ -34,11 +35,14 @@ namespace SummerBoot.Feign.Nacos
             {
                 string accessToken = string.Empty;
 
-                var cachedToken = cache.GetValue<string>("nacosAccessToken");
-
-                if (cachedToken.HasValue)
+                if (cache != null)
                 {
-                    accessToken = cachedToken.Data;
+                    var cachedToken = cache.GetValue<string>("nacosAccessToken");
+
+                    if (cachedToken.HasValue)
+                    {
+                        accessToken = cachedToken.Data;
+                    }
                 }
 
                 if (string.IsNullOrEmpty(accessToken))
@@ -53,7 +57,10 @@ namespace SummerBoot.Feign.Nacos
                         accessToken = loginResultDto.accessToken;
                     }
                     DateTime currentTime = DateTime.Now;
-                    cache.SetValueWithAbsolute("nacosAccessToken", loginResultDto.accessToken, (currentTime.AddSeconds(loginResultDto.tokenTtl) - currentTime).Duration());
+                    if (cache != null)
+                    {
+                        cache.SetValueWithAbsolute("nacosAccessToken", loginResultDto.accessToken, (currentTime.AddSeconds(loginResultDto.tokenTtl) - currentTime).Duration());
+                    }
 
                 }
                 if (!string.IsNullOrEmpty(accessToken))

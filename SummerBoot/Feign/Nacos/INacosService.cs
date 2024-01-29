@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SummerBoot.Feign.Nacos
 {
-    [FeignClient(Url = "${nacos:serviceAddress}", InterceptorType = typeof(AuthInterceptor), Timeout = 60)]
+    [FeignClient(Url = "${nacos:serviceAddress}", InterceptorType = typeof(NacosAuthInterceptor), Timeout = 60)]
     public interface INacosService
     {
         /// <summary>
