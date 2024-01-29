@@ -1,3 +1,4 @@
+# Please visit the source repo:
 [English Document](https://github.com/TripleView/SummerBoot/blob/master/README.md) | [中文文档](https://github.com/TripleView/SummerBoot/blob/master/README.zh-cn.md)
 
 
@@ -1291,6 +1292,11 @@ in appsettings.json / appsettings.Development.json configuration file
     "serviceAddress":"http://172.16.189.242:8848/",
     // Namespace id, such as 832e754e-e845-47db-8acc-46ae3819b638 or public
    "namespaceId":"dfd8de72-e5ec-4595-91d4-49382f500edf",
+
+   //个人新增修改，如果nacos开启和认证，则增加下列参数以在请求过程中增加授权
+   "AuthEnabled": true,
+   "UserName": "nacos",
+   "Password": "nacos",
 
     //--------If you just access the microservices in nacos , you only need to configure lbStrategy , defaultNacosGroupName and defaultNacosNamespaceId are optional ------
        //Client load balancing algorithm, there are multiple instances under one service, lbStrategy is used to select instances under the service, the default is Random (random), you can also choose WeightRandom (random after being weighted according to the service weight)
