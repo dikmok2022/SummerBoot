@@ -328,3 +328,7 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+/WebApiExample/WebApiExample.csproj
+/SummerBoot.Performance.Test/SummerBoot.Performance.Test.csproj
+/SummerBoot.Test/SummerBoot.Test.csproj
+/WebApplication1/WebApplication1.csproj

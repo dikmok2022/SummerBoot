@@ -21,7 +21,7 @@ namespace WebApiExample.Controllers
         [HttpGet("Index")]
         public string Index()
         {
-            return configuration.GetSection("a").Value+"-"+ configuration.GetSection("b").Value;
+            return configuration.GetSection("NacosAppSettings").GetSection("WingTask").GetSection("appName").Value;
         }
     }
 }
