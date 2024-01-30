@@ -336,3 +336,4 @@ ASALocalRun/
 /WebApiExample/appsettings.Development.json
 /WebApiExample/Controllers/HomeController.cs
 /WebApiExample/Program.cs
+/WebApiExample/appsettings.Development.json
